@@ -11,8 +11,8 @@ const ProductDetail = () => {
 
     useEffect(()=>{
      axios.get(`https://fakestoreapi.com/products/${id}`)
-      .then(res => res.json())
-      .then(data => setProduct(data));
+      .then(res => setProduct(res.data))
+      .catch(err => console.log(err))
 
     },[id])
     if (!product) return <p>Caricamento...</p>
