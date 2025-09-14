@@ -1,10 +1,10 @@
 import Navbar from './components/Navbar'
 import {Routes,Route} from 'react-router-dom'
-import Home from './components/home'
-import About from './components/About'
-import Products from './components/Products'
-import Layout from './components/Layout'
-import ProductDetail from './components/ProductDetail'
+import Layout from './Pages/Layout'
+import Home from './Pages/home'
+import About from './Pages/About'
+import Products from './Pages/Products'
+import ProductDetail from './Pages/ProductDetail'
 
 
 function App() {
