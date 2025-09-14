@@ -1,4 +1,5 @@
-import React,{useEffect, useState} from 'react';
+import React,{useEffect, useState,} from 'react';
+import axios from 'axios';
 import { useParams,useNavigate } from 'react-router-dom';
 
 
@@ -9,7 +10,7 @@ const ProductDetail = () => {
     
 
     useEffect(()=>{
-     fetch(`https://fakestoreapi.com/products/${id}`)
+     axios.get(`https://fakestoreapi.com/products/${id}`)
       .then(res => res.json())
       .then(data => setProduct(data));
 

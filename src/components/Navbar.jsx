@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom'
 import { BudgetContext } from "../context/BudgetContext";
 
 const Navbar = () => {
-  const { budgetMode, setBudgetMode } = useContext(BudgetContext);
+const { maxPrice, setMaxPrice } = useContext(BudgetContext);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className='container'>
@@ -36,11 +36,16 @@ const Navbar = () => {
             </li>
           </ul>
           <div className='ms-auto'>
-            <button className='btn btn-warning'
-             onClick={() => setBudgetMode(!budgetMode)}
-             >
-             {budgetMode ? 'Disattiva Budget' : 'Attiva Budget'} 
-            </button>
+             <label className='text-warning'>
+               Prezzo massimo:{" "}
+               <input 
+                type='number' 
+                value={maxPrice ?? ''} 
+                onChange={e => setMaxPrice(e.target.value ? Number(e.target.value) : null)}
+                className="form-control d-inline-block"                            
+                style={{ width: "100px" }}
+               />
+              </label>
           </div>
         </div>
       </div>

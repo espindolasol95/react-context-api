@@ -3,12 +3,13 @@ import{useState, useEffect,useContext}from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom' 
 import { BudgetContext } from "../context/BudgetContext";
+
 function Products(){
   const [products, setProducts]= useState([]) 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const { budgetMode } = useContext(BudgetContext);
-
+  const { maxPrice } = useContext(BudgetContext);
 
   useEffect(()=>{
      axios.get('https://fakestoreapi.com/products')
@@ -27,9 +28,9 @@ function Products(){
  if (loading) return <p>Caricamento prodotti...</p>  //questo l'ho copiato non sono riuscita a ragionarlo prima
  if (error) return <p>Errore: {error}</p>
 
- // filtro prodotti <=30
-  const filteredProducts = budgetMode
-  ? products.filter(product => product.price <= 30)
+ // filtro con maxprice
+  const filteredProducts = maxPrice!=null
+  ? products.filter(product => product.price <= maxPrice)
   : products;
 
 

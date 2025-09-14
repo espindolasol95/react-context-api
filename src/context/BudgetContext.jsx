@@ -5,7 +5,7 @@ export const BudgetProvider=({children}) =>{
 
     const[budgetMode, setBudgetMode] = useState(false); //stato booleano false con budgetMode, setBudgetMode serve per portarlo a vero
      
-     const [maxPrice, setMaxPrice] = useState(null); //  prepparo per il bonus
+     const [maxPrice, setMaxPrice] = useState(null); 
 
     return(
         <BudgetContext.Provider value = {{budgetMode,setBudgetMode, maxPrice, setMaxPrice }}>
