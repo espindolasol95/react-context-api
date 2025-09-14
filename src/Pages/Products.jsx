@@ -1,11 +1,13 @@
 import React from 'react'
-import{useState, useEffect}from 'react'
+import{useState, useEffect,useContext}from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom' 
+import { BudgetContext } from "../context/BudgetContext";
 function Products(){
   const [products, setProducts]= useState([]) 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const { budgetMode } = useContext(BudgetContext);
 
 
   useEffect(()=>{
@@ -25,13 +27,21 @@ function Products(){
  if (loading) return <p>Caricamento prodotti...</p>  //questo l'ho copiato non sono riuscita a ragionarlo prima
  if (error) return <p>Errore: {error}</p>
 
+ // filtro prodotti <=30
+  const filteredProducts = budgetMode
+  ? products.filter(product => product.price <= 30)
+  : products;
+
+
+
 
   //render della pag con i prodotti
   return (
     <div className="container mt-4">
         <h1  className="mb-4 text-center"> I nostri proddotti</h1>
         <div className="row">
-          {products.map(product =>(
+
+          {filteredProducts.map(product =>(
           <div className="col-md-3 mb-4" key={product.id}>
             <div className="card h-100 card border-black">
               <img src={product.image} className="card-img-top p-3" alt={product.title} style={{height: '200px', objectFit: 'contain'}}/>
