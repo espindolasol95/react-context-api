@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {NavLink} from 'react-router-dom'
+import { BudgetContext } from "../context/BudgetContext";
 
 const Navbar = () => {
+  const { budgetMode, setBudgetMode } = useContext(BudgetContext);
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className='container'>
@@ -33,6 +35,13 @@ const Navbar = () => {
               </NavLink>
             </li>
           </ul>
+          <div className='ms-auto'>
+            <button className='btn btn-warning'
+             onClick={() => setBudgetMode(!budgetMode)}
+             >
+             {budgetMode ? 'Disattiva Budget' : 'Attiva Budget'} 
+            </button>
+          </div>
         </div>
       </div>
     </nav>

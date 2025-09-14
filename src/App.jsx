@@ -5,14 +5,16 @@ import Home from './Pages/home'
 import About from './Pages/About'
 import Products from './Pages/Products'
 import ProductDetail from './Pages/ProductDetail'
+import { BudgetProvider } from './context/BudgetContext'
 
 
 function App() {
     return(
-        <div>
-         <Navbar />
-        <div className="container mt-4">
         
+        <BudgetProvider>
+         <div>
+         <Navbar />
+         <div className="container mt-4">
          <Routes>
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetail />} />
@@ -21,6 +23,7 @@ function App() {
          </Routes>
          </div>
         </div>
+        </BudgetProvider>
     
     )
   
